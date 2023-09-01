@@ -58,7 +58,6 @@ async function uploadFile() {
         let fileRef = cleanFileName(getFilePath());
         const storageRef = ref(storage, fileRef);
 
-
         const uploadTask = uploadBytesResumable(storageRef, file);
 
         let paused = false;
@@ -383,8 +382,13 @@ function addRed(id) {
     }
     return;
   }
-  if (document.getElementById(id).value == "" || document.getElementById(id).childNodes[1].value == 0) {
+
+  if (document.getElementById(id).value == "") {
     document.getElementById(id).style.border = "2px solid red"
+  } else if (document.getElementById(id).childNodes.length > 1) {
+    if (document.getElementById(id).childNodes[1].value == 0) {
+      document.getElementById(id).style.border = "2px solid red"
+    }
   }
 }
 
