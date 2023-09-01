@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vastly Video Dropbox</title>
+    <link rel="stylesheet" href="videoDrop.css">
+    <link rel="stylesheet" href="dropdown.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="40x40" href="favicon.png">
+
+</head>
+
+<body>
+    <script src="videoDrop.js" type="module"></script>
+    <script src="dropdown.js" type="module"></script>
+
+    <div class="header">
+        <div class="header-text">Vastly</div>
+    </div>
+
+    <h1 id="progress">Uploading... 0%</h1>
+    <div id="pauseBtn">Pause</div>
+
+
+    <div class="content" id="content">
+
+        <h2>Select a File*</h1>
+        <form action="/action_page.php">
+            <!-- <label for="myfile">Select a file:</label> -->
+            <input type="file" id="myfile" name="myfile" accept="video/mp4, video/webm"><br>
+
+                <!-- <div class="field-text" >Title</div> -->
+                <input type="text" required="true" id="title-text" autocomplete="off" placeholder="Title*" name="title-text">
+            <!-- </div> -->
+
+                <br><br>
+            <!-- <div class="field-row"> -->
+
+                <!-- <input type="text" required="true" id="author-text" placeholder="Author" name="title-text"> -->
+                <div class="custom-select" id="authorSelect" style="width:100%;">
+                    <select class="author-select">
+                      <option value="0">Choose Author*</option>
+                      <!-- <option value="1">Audi</option> -->
+                      <!-- <option value="2">BMW</option>
+                      <option value="3">Citroen</option>
+                      <option value="4">Audi</option>
+                      <option value="5">BMW</option>
+                      <option value="6">Citroen</option> -->
+                    </select>
+                  </div>
+                <br>
+                <input type="date" required="true" id="date" name="date" value="2023-09-01" min="1950-01-01" />
+                <br>
+                
+                <input type="text" required="true" id="link" autocomplete="off" placeholder="Youtube Link (https://www.youtube.com/watch...)*" name="link-text">
+
+                <br>
+                <textarea required="true" rows="5" cols="20" id="bio-text" wrap='soft' placeholder="Description*" name="bio-text"></textarea>
+
+                <br>
+
+                <div class="channel-row">
+
+                    <div class="custom-select" id="mainChannel" style="width:200px;">
+                        <select class="channel-select">
+                          <option value="0">Main Channel*</option>
+                          <!-- <option value="1">Audi</option> -->
+                          <!-- <option value="2">BMW</option>
+                          <option value="3">Citroen</option>
+                          <option value="4">Audi</option>
+                          <option value="5">BMW</option>
+                          <option value="6">Citroen</option> -->
+                        </select>
+                      </div>
+
+                    <div class="custom-select" id="extraChannel1" style="width:200px;">
+                        <select class="channel-select">
+                          <option value="0">Optional Channel</option>
+                          <!-- <option value="1">Audi</option>
+                          <option value="2">BMW</option>
+                          <option value="3">Citroen</option>
+                          <option value="4">Audi</option>
+                          <option value="5">BMW</option>
+                          <option value="6">Citroen</option> -->
+                        </select>
+                      </div>
+
+                      <div class="custom-select" id="extraChannel2" style="width:200px;">
+                        <select class="channel-select">
+                          <option value="0">Optional Channel</option>
+                          <!-- <option value="1">Audi</option>
+                          <option value="2">BMW</option>
+                          <option value="3">Citroen</option>
+                          <option value="4">Audi</option>
+                          <option value="5">BMW</option>
+                          <option value="6">Citroen</option> -->
+                        </select>
+                      </div>
+                </div>
+
+
+            <br>
+            <div id="incomplete">Please finish filling in the items above.</div>
+            <br>
+            <div class="field-row">
+                <input type="button" id="submitBtn" value="Submit">
+                <input type="reset">
+            </div>
+
+            
+        </form>
+
+        <!-- <button type="button" id="myButton">Click Me!</button> -->
+
+    </div>
+
+
+
+    <!-- Your HTML content goes here -->
+
+    
+</body>
+
+</html>

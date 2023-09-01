@@ -1,0 +1,207 @@
+/* font-weight options: 300, 500, 700, 800 */
+
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    width: 100vw;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-text {
+    color: #6243D2;
+    font-weight: 800;
+    align-self: center;
+    font-size: 3rem;
+}
+
+.field-text {
+    color: white;
+    font-weight: 700;
+    align-self: flex-start;
+    font-size: 1rem;
+}
+
+.field-row {
+    display: flex;
+    justify-content: space-around;
+}
+
+@media only screen and (max-width: 600px) {
+    .field-row {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}
+
+.channel-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+    .channel-row {
+        display: flex;
+        flex-direction: column-reverse;
+        /* width: 100%; */
+        justify-content: space-between;
+    }
+}
+
+.content {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+h1 {
+    color: white;
+}
+
+#progress {
+    display: none;
+}
+
+h2 {
+    color: white;
+}
+
+#pauseBtn {
+    display: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#myfile {
+    color: white;
+}
+
+form {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type=text] {
+    border: none;
+    background-color: transparent;
+    color: white;
+    width: 100%;
+    border-bottom: 2px solid #6243D2;
+    transition: width 0.4s ease-in-out;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+
+input[type=text]:focus {
+    width: 100%;
+    outline: none;
+
+}
+
+input[type=text]:hover {
+    width: 100%;
+}
+
+input[type=file] {
+    border: none;
+    background-color: transparent;
+    color: white;
+    /* width: 100%; */
+}
+
+input[type=button], input[type=submit] {
+    background-color: #6243D2;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+input[type=reset] {
+    background-color: transparent;
+    border: 2px solid #6243D2;
+    color: #6243D2;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+input[type=date] {
+    background-color: #6243D2;
+    /* accent-color: white; */
+    border: 2px solid #6243D2;
+    font-size: 1rem;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#incomplete {
+    display: none;
+    color: red;
+}
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+input[type="date"]::-moz-calendar-picker-indicator {
+    display: none;
+} */
+
+
+textarea {
+    background-color: transparent;
+    color: white;
+    width: 100%;
+    resize: none;
+    height: 20vh;
+    border: 2px solid #6243D2;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+label {
+    /* border: none;
+    background-color: transparent; */
+    color: white;
+    /* width: 100%; */
+    /* border-bottom: 2px solid #6243D2; */
+    /* transition: width 0.4s ease-in-out; */
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem; 
+}
+
