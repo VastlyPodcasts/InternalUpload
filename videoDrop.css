@@ -113,6 +113,11 @@ input[type=text] {
     font-size: 1.25rem;
 }
 
+#link {
+    font-weight: 500;
+ 
+}
+
 
 input[type=text]:focus {
     width: 100%;
@@ -156,6 +161,8 @@ input[type=date] {
     /* accent-color: white; */
     border: 2px solid #6243D2;
     font-size: 1rem;
+    font-family: 'Manrope', sans-serif;
+
     color: white;
     padding: 16px 32px;
     text-decoration: none;

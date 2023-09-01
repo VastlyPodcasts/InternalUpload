@@ -38,6 +38,19 @@ const channels_ref = collection(db, 'channels');
 
 // const db = getFirestore();
 
+document.getElementById('submitBtn').addEventListener('click', (event) => {
+  markComplete();
+
+  if (allFieldsComplete()) {
+    uploadFile();
+    } else {
+      markIncomplete();
+
+      // console.log("we here")
+    }
+});
+
+fillChannels()
 
 async function uploadFile() {
     if (!isFileInputEmpty()) {
@@ -104,11 +117,11 @@ async function uploadFile() {
             document.getElementById('progress').innerHTML = "Done!";
             document.getElementById('pauseBtn').style.display = "none";
             document.getElementById('content').style.display = "";
+            document.getElementById("myForm").reset();
 
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
               console.log('File available at', downloadURL);
             });
-            
           }
         );
 
@@ -147,11 +160,6 @@ function isFileInputEmpty() {
         return false;
     }
 }
-
-// document.getElementById('myButton').addEventListener('click', function() {
-//     alert(getFilePath());
-// });
-
 
 async function fillChannels() {
     try {
@@ -243,11 +251,24 @@ async function fillAuthors() {
 
 function cleanFileName(fileName) {
 
+  const CHARS_TO_REMOVE = ["?", "-", ",", "'", "`", "$", "&", "%", "#", "@", "^", "*", "<", ">", "(", ")", ":", ";", "[", "]", "/"]
+
   var cleanedName = fileName.replace(/\?/g, "");
   cleanedName = cleanedName.replace(/-/g, "");
   cleanedName = cleanedName.replace(/ /g, "_");
   cleanedName = cleanedName.replace(/,/g, "");
   cleanedName = cleanedName.replace(/'/g, "");
+  cleanedName = cleanedName.replace(/\$/g, "");
+  cleanedName = cleanedName.replace(/%/g, "");
+  cleanedName = cleanedName.replace(/&/g, "");
+  cleanedName = cleanedName.replace(/@/g, "");
+  cleanedName = cleanedName.replace(/#/g, "");
+  cleanedName = cleanedName.replace(/\(/g, "");
+  cleanedName = cleanedName.replace(/\)/g, "");
+  cleanedName = cleanedName.replace(/\*/g, "");
+  cleanedName = cleanedName.replace(/\+/g, "");
+  cleanedName = cleanedName.replace(/!/g, "");
+
   // cleanedName = cleanedName.replace("`", "");
 
   return cleanedName;
@@ -264,7 +285,8 @@ async function updateDocument(video) {
     fileName: video.fileName,
     channels: video.channels,
     youtubeURL: video.youtubeURL,
-    date: video.date
+    date: video.date,
+    fullDate: video.fullDate
   });
 
   // console.log('Document updated' + channel);
@@ -290,7 +312,8 @@ async function submitInfo() {
     fileName: getFilePath(),
     channels: channels,
     youtubeURL: valueFromId("link"),
-    date: formatDateString(valueFromId("date"))
+    date: formatDateString(valueFromId("date")),
+    fullDate: valueFromId("date")
   }
 
   try {
@@ -331,18 +354,6 @@ function valueFromDropdown(id) {
   }
   return "";
 }
-
-document.getElementById('submitBtn').addEventListener('click', (event) => {
-  markComplete();
-
-  if (allFieldsComplete()) {
-    uploadFile();
-    } else {
-      markIncomplete();
-
-      // console.log("we here")
-    }
-});
 
 function markComplete() {
   removeRed('myfile');
@@ -407,11 +418,6 @@ function allFieldsComplete() {
   return false
 }
 
-
-
-fillChannels()
-
-
 async function signIn() {
 
   const email = "internal@vastlypodcasts.com"
@@ -428,13 +434,6 @@ async function signIn() {
     const errorMessage = error.message;
   });
 }
-
-
-
-
-
-
-
 
 function initDropDown() {
 
@@ -519,7 +518,7 @@ function initDropDown() {
     then close all select boxes: */
     document.addEventListener("click", closeAllSelect);
     
-    }
+}
 
 
     
