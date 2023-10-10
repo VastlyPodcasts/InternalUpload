@@ -287,7 +287,9 @@ async function updateDocument(video, id) {
     channels: video.channels,
     youtubeURL: video.youtubeURL,
     date: video.date,
-    fullDate: video.fullDate
+    fullDate: video.fullDate,
+    viewedCount: video.viewedCount,
+    likedCount: video.likedCount
   });
 
   // console.log('Document updated' + channel);
@@ -314,7 +316,9 @@ async function submitInfo(id) {
     channels: channels,
     youtubeURL: valueFromId("link"),
     date: formatDateString(valueFromId("date")),
-    fullDate: valueFromId("date")
+    fullDate: valueFromId("date"),
+    viewedCount: 0,
+    likedCount: 0
   }
 
   try {
