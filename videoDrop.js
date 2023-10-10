@@ -5,6 +5,7 @@ console.log('running');
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js'
+import { v4 as uuidv4 } from 'https://cdn.skypack.dev/uuid';
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.3.0/firebase-analytics.js'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-storage.js";
 import { getFirestore, collection, getDocs, Timestamp, FieldValue, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-firestore.js";
@@ -54,6 +55,7 @@ fillChannels()
 
 async function uploadFile() {
     if (!isFileInputEmpty()) {
+        const id = uuidv4();
         const file = document.getElementById('myfile').files[0];
         let fileRef = cleanFileName(getFilePath());
         const storageRef = ref(storage, fileRef);
@@ -111,7 +113,7 @@ async function uploadFile() {
           () => {
             // Handle successful uploads on complete
             // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-            submitInfo();
+            submitInfo(id);
             document.getElementById('progress').style.color = "lightgreen";
             document.getElementById('progress').innerHTML = "Done!";
             document.getElementById('pauseBtn').style.display = "none";
@@ -273,9 +275,9 @@ function cleanFileName(fileName) {
   return cleanedName;
 }
 
-async function updateDocument(video) {
+async function updateDocument(video, id) {
 
-  const ref = doc(db, "videos", video.title);
+  const ref = doc(db, "videos", id);
 
   await setDoc(ref, {
     title: video.title,
@@ -291,7 +293,7 @@ async function updateDocument(video) {
   // console.log('Document updated' + channel);
 }
 
-async function submitInfo() {
+async function submitInfo(id) {
 
   let title = valueFromId("title-text")
   let channels = [valueFromDropdown("mainChannel")]
@@ -316,7 +318,7 @@ async function submitInfo() {
   }
 
   try {
-    await updateDocument(video);
+    await updateDocument(video, id);
   } catch (error) {
     console.log(error)
   }
