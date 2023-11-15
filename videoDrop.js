@@ -285,6 +285,7 @@ async function updateDocument(video, id) {
     bio: video.bio, 
     fileName: video.fileName,
     channels: video.channels,
+    youtubeURL: video.youtubeURL,
     episodeID: video.episodeID,
     date: video.date,
     fullDate: video.fullDate,
@@ -314,7 +315,8 @@ async function submitInfo(id) {
     bio: valueFromId("bio-text"),
     fileName: getFilePath(),
     channels: channels,
-    episodeID: valueFromId("link"),
+    youtubeURL: valueFromId("link"),
+    episodeID: valueFromId("episodeID"),
     date: formatDateString(valueFromId("date")),
     fullDate: valueFromId("date"),
     viewedCount: 0,
@@ -365,7 +367,7 @@ function markComplete() {
   removeRed('title-text');
   removeRed('mainChannel');
   removeRed('authorSelect');
-  removeRed('link');
+  // removeRed('link');
   removeRed('bio-text');
   document.getElementById('incomplete').style.display = "none"
 }
@@ -375,7 +377,7 @@ function markIncomplete() {
   addRed('title-text');
   addRed('mainChannel');
   addRed('authorSelect');
-  addRed('link');
+  // addRed('link');
   addRed('bio-text');
   document.getElementById('incomplete').style.display = "block"
 
@@ -415,13 +417,13 @@ function allFieldsComplete() {
   if (valueFromDropdown("mainChannel") != "") {
     if (valueFromId("title-text") != "") {
       if (valueFromDropdown("authorSelect") != "") {
-        if (valueFromId("link") != "") {
+        // if (valueFromId("link") != "") {
           if (valueFromId("bio-text") != "") {
             if (!isFileInputEmpty()) {
             return true
             }
           }
-        }
+        // }
       }
     }
   }
