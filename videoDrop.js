@@ -252,7 +252,7 @@ async function fillAuthors() {
 
 function cleanFileName(fileName) {
 
-  const CHARS_TO_REMOVE = ["?", "-", ",", "'", "`", "$", "&", "%", "#", "@", "^", "*", "<", ">", "(", ")", ":", ";", "[", "]", "/"]
+  const CHARS_TO_REMOVE = ["?", "-", ",", "'", "`", "$", "&", "%", "#", "@", "^", "*", "<", ">", "(", ")", ":", ";", "[", "]", "/", "\""]
 
   var cleanedName = fileName.replace(/\?/g, "");
   cleanedName = cleanedName.replace(/-/g, "");
@@ -268,9 +268,8 @@ function cleanFileName(fileName) {
   cleanedName = cleanedName.replace(/\)/g, "");
   cleanedName = cleanedName.replace(/\*/g, "");
   cleanedName = cleanedName.replace(/\+/g, "");
+  cleanedName = cleanedName.replace(/\"/g, "");
   cleanedName = cleanedName.replace(/!/g, "");
-
-  // cleanedName = cleanedName.replace("`", "");
 
   return cleanedName;
 }
